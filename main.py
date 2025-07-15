@@ -8,7 +8,10 @@ def main():
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     while True:
-        pygame.Surface.fill(screen, "red")
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                return
+        pygame.Surface.fill(screen, "black")
         pygame.display.flip()
     print("Starting Asteroids!")
     print(f"Screen width: {SCREEN_WIDTH}")
