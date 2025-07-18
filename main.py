@@ -2,10 +2,9 @@
 # the open-source pygame library
 # throughout this file
 import pygame
-import AsteroidField
 from constants import *
 from player import Player
-import asteroidfield
+from asteroidfield import AsteroidField
 
 def main():
     pygame.init()
