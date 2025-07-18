@@ -27,6 +27,8 @@ def main():
     AsteroidField.containers = (updatable, )
     asteroid_field = AsteroidField()
 
+    shots = pygame.sprite.Group()
+
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
