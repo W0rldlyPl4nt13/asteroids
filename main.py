@@ -2,22 +2,38 @@
 # the open-source pygame library
 # throughout this file
 import pygame
+import AsteroidField
 from constants import *
 from player import Player
+import asteroidfield
 
 def main():
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pygame.time.Clock()
     dt = 0
+
+    # create two groups and set both groups as containers for player 
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+    Player.containers = (updatable, drawable)
+
     player = Player(x = SCREEN_WIDTH/2, y= SCREEN_HEIGHT/2)
+
+    asteroids = pygame.sprite.Group()
+    asteroid.containers = (asteroids, updatable, drawable)
+
+    AsteroidField.containers = (updatable)
+    asteroid_field = AsteroidField()
+
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
         pygame.Surface.fill(screen, "black")
-        player.update(dt)
-        player.draw(screen)
+        updatable.update(dt)
+        for r in drawable:
+            r.draw(screen)
         pygame.display.flip()
 
         # add clock tick method - pause the loop every 1/60th second
